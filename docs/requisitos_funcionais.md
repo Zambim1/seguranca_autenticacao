@@ -28,7 +28,6 @@ Permitir que usuários autenticados acessem o sistema de maneira segura.
 | Mecanismo de autenticação | Uso de JWT ou OAuth para autenticação segura. |
 | Armazenamento de senha seguro | Senhas nunca devem ser armazenadas de forma reversível. |
 | Proteção contra ataques | Implementação de bloqueio após múltiplas tentativas falhas. |
-| Autenticação multifator (MFA) | Opção de MFA configurável pelo usuário. |
 | Expiração de token | Token JWT deve ter tempo de expiração configurável. |
 
 ## 3. Controle de Permissões Baseado em Papéis (RBAC)
