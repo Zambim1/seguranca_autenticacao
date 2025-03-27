@@ -1,8 +1,7 @@
 # REQUISITOS FUNCIONAIS DO SISTEMA
 
 ## 1. Cadastro de Usuários
-
-### Descrição  
+  
 Permitir que novos usuários se registrem no sistema com informações necessárias para autenticação e autorização.
 
 ### Requisitos  
@@ -19,8 +18,7 @@ Permitir que novos usuários se registrem no sistema com informações necessár
 | Cadastro por administradores | Administradores podem criar usuários internos. |
 
 ## 2. Login Seguro (Autenticação)
-
-### Descrição  
+ 
 Permitir que usuários autenticados acessem o sistema de maneira segura.
 
 ### Requisitos  
@@ -34,14 +32,13 @@ Permitir que usuários autenticados acessem o sistema de maneira segura.
 | Expiração de token | Token JWT deve ter tempo de expiração configurável. |
 
 ## 3. Controle de Permissões Baseado em Papéis (RBAC)
-
-### Descrição  
+ 
 Garantir que cada usuário tenha acesso apenas às funcionalidades autorizadas pelo seu papel no sistema.
 
 ### Requisitos  
 | Requisito | Descrição |
 |-----------|-----------|
-| Suporte a múltiplos papéis | Ex.: Admin, Usuário Comum, Moderador. |
+| Suporte a múltiplos papéis | Admin, Usuário Comum, Moderador. |
 | Permissões por papel | Cada papel deve ter permissões específicas. |
 | Gestão de papéis | Administradores podem criar, modificar e excluir papéis. |
 | Controle de acesso | O sistema deve impedir acessos não autorizados. |
@@ -49,7 +46,6 @@ Garantir que cada usuário tenha acesso apenas às funcionalidades autorizadas p
 
 ## 4. Reset de Senha Seguro
 
-### Descrição  
 Permitir que usuários redefinam suas senhas de maneira segura caso a esqueçam.
 
 ### Requisitos  
@@ -64,21 +60,19 @@ Permitir que usuários redefinam suas senhas de maneira segura caso a esqueçam.
 
 ## 5. Registro de Logs de Acesso e Alterações
 
-### Descrição  
 Manter um histórico seguro de acessos e alterações realizadas no sistema para auditoria e segurança.
 
 ### Requisitos  
 | Requisito | Descrição |
 |-----------|-----------|
 | Registro de login | Registrar todas as tentativas de login. |
-| Registro de operações críticas | Ex.: alteração de permissões, exclusão de conta. |
+| Registro de operações críticas | Alteração de permissões, exclusão de conta. |
 | Dados de acesso | IP, dispositivo e horário devem ser registrados. |
 | Consulta de logs | Administradores podem visualizar e filtrar logs. |
 | Proteção dos logs | Logs devem ser protegidos contra exclusão/modificação não autorizada. |
 
 ## 6. Exclusão de Conta Conforme LGPD
 
-### Descrição  
 Permitir que usuários solicitem a exclusão de seus dados pessoais em conformidade com a Lei Geral de Proteção de Dados (LGPD).
 
 ### Requisitos  
@@ -93,8 +87,7 @@ Permitir que usuários solicitem a exclusão de seus dados pessoais em conformid
 
 ## 7. Anonimização ou Pseudoanonimização Conforme LGPD
 
-### Descrição  
-Garantir que, ao excluir dados de um usuário, as informações sejam anonimizadas ou pseudoanonimizadas conforme exigido pela legislação.
+Garantir que as informações sejam anonimizadas ou pseudoanonimizadas conforme exigido pela legislação.
 
 ### Requisitos  
 | Requisito | Descrição |
@@ -104,4 +97,3 @@ Garantir que, ao excluir dados de um usuário, as informações sejam anonimizad
 | Irreversibilidade dos dados | Dados anonimizados não devem ser reversíveis. |
 | Pseudoanonimização | Aplicar pseudoanonimização para acessos internos controlados. |
 
-!
