@@ -1,63 +1,57 @@
-# Arquitetura da API - Sistema de Autenticação e Administração de Usuários
+
+# Arquitetura da API (Simplificada) - Sistema de Autenticação
 
 ## Visão Geral
-A API será desenvolvida em **Python** utilizando o framework **Flask** e seguirá os princípios da arquitetura **RESTful**. O sistema será modular, seguro e escalável, garantindo integração futura com outras aplicações.
+
+Esta API atua apenas como interface de comunicação entre o ambiente externo e a aplicação backend (que contém toda a lógica).
 
 ## Tecnologias Utilizadas
 
-- **Linguagem**: Python 3.x
-- **Framework**: Flask
-- **Banco de Dados**: MySQL
-- **ORM**: SQLAlchemy
-- **Autenticação**: JWT (JSON Web Token)
-- **Criptografia**: bcrypt para hash de senhas
-- **Controle de Acesso**: RBAC (Role-Based Access Control)
-- **Documentação da API**: Swagger (Flasgger) ou Redoc
-- **Gerenciamento de Dependências**: Poetry / Pipenv
-- **Serviços de Log**: Logging nativo do Python + armazenamento em banco
-- **Padrão de Arquitetura**: MVC (Model-View-Controller) + DAO (Data Access Object)
+| Componente          | Tecnologia             |
+|---------------------|------------------------|
+| Linguagem           | Python 3.x             |
+| Framework           | Flask                  |
+| Banco de Dados      | MySQL (gerenciado pela aplicação) |
+| ORM                 | SQLAlchemy (gerenciado pela aplicação) |
+| Autenticação        | JWT                    |
+| Hash de senhas      | bcrypt (gerenciado pela aplicação) |
+| Proteções básicas   | Verificação de token, controle de métodos e conteúdo |
+| Dependências        | requirements.txt  |
 
 ## Estrutura de Pastas do Projeto
 
 ```plaintext
 /api
-│── app/
-│   ├── controllers/     # Lógica de negócios e processamento de requisições
-│   ├── models/          # Definições das tabelas e classes do banco de dados
-│   ├── routes/          # Rotas da API
-│   ├── services/        # Serviços auxiliares (hashing, envio de email, etc.)
-│   ├── middlewares/     # Interceptadores para segurança e logs
-│   ├── utils/           # Funções auxiliares
-│   ├── config.py        # Configuração geral do sistema
-│   ├── database.py      # Conexão e inicialização do banco de dados
-│── tests/               # Testes unitários e de integração
-│── migrations/          # Controle de versão do banco de dados
-│── requirements.txt     # Dependências do projeto
-│── wsgi.py              # Ponto de entrada para execução do Flask
+│
+├── api/
+│   ├── routes/
+│   ├── middleware/
+│   └── __init__.py
+│
+├── config/
+│   └── config.py
+│
+├── run.py
+├── requirements.txt
+└── README.md
 ```
 
-## Padrão de Rotas e Endpoints
-A API seguirá um padrão RESTful, com endpoints organizados por recursos.
+## Endpoints
 
-### Endpoints
+Todos os dados recebidos e enviados serão em JSON. A API apenas repassa dados ao backend da aplicação.
 
-| Método  | Endpoint                      | Descrição |
-|---------|--------------------------------|-------------|
-| `POST`  | `/auth/register`               | Cadastro de usuário |
-| `POST`  | `/auth/login`                  | Login e geração de token JWT |
-| `POST`  | `/auth/logout`                 | Logout do usuário |
-| `POST`  | `/auth/reset-password`         | Envio de e-mail para redefinição de senha |
-| `PUT`   | `/auth/reset-password/confirm` | Redefinição de senha |
-| `GET`   | `/users`                        | Listagem de usuários (admin) |
-| `GET`   | `/users/<id>`                   | Detalhes de um usuário |
-| `PUT`   | `/users/<id>`                   | Atualização de informações do usuário |
-| `DELETE`| `/users/<id>`                   | Exclusão de conta |
+| Método  | Endpoint                      | Descrição                    |
+|---------|-------------------------------|------------------------------|
+| POST    | /auth/register                | Enviar dados de registro     |
+| POST    | /auth/login                   | Enviar dados de login        |
+| GET     | /users/<id>                   | Obter dados do usuário       |
+| PUT     | /users/<id>                   | Atualizar dados do usuário   |
+| DELETE  | /users/<id>                   | Requisitar exclusão          |
 
-## Segurança e Autenticação
+## Segurança Básica
 
-- **JWT**: Tokens serão assinados usando uma chave secreta segura.
-- **MFA (Opcional)**: Suporte para autenticação multifator.
-- **Proteção contra brute-force**: Bloqueio temporário após múltiplas tentativas de login.
-- **Controle de Permissões (RBAC)**: Cada endpoint exigirá permissões específicas baseadas no papel do usuário.
-
+- Validação de formato de entrada (JSON)
+- Verificação de tokens JWT nos headers
+- CORS habilitado apenas para domínios permitidos
+- HTTPS obrigatório em ambiente real (apenas em ambiente web real)
 
