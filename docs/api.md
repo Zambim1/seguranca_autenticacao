@@ -1,5 +1,5 @@
 
-# Arquitetura da API (Simplificada) - Sistema de Autenticação
+# Arquitetura da API - Sistema de Autenticação
 
 ## Visão Geral
 
