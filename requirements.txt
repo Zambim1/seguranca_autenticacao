@@ -1,0 +1,7 @@
+bcrypt
+fastAPI
+SqlAlchemy
+pycryptodome
+dotenv
+uvicorn
+python-jose

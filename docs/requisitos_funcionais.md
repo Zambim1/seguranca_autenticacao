@@ -9,8 +9,6 @@ Permitir que novos usuários se registrem no sistema com informações necessár
 |-----------|-----------|
 | Nome completo | O usuário deve fornecer seu nome completo. |
 | E-mail único e válido | O e-mail deve ser válido e único no sistema. |
-| Senha forte | Mínimo de 8 caracteres, incluindo letras, números e caracteres especiais. |
-| Confirmação de senha | O usuário deve confirmar a senha no momento do cadastro. |
 | Papel inicial | Definido no cadastro, opcional para administradores. |
 | Validação de e-mail | O usuário deve validar o e-mail antes do acesso. |
 | Armazenamento seguro da senha | A senha deve ser armazenada com hash + salt. |
@@ -25,10 +23,9 @@ Permitir que usuários autenticados acessem o sistema de maneira segura.
 | Requisito | Descrição |
 |-----------|-----------|
 | Credenciais de acesso | O usuário deve fornecer e-mail e senha válidos. |
-| Mecanismo de autenticação | Uso de JWT ou OAuth para autenticação segura. |
+| Mecanismo de autenticação | Uso de JWT para autenticação segura. |
 | Armazenamento de senha seguro | Senhas nunca devem ser armazenadas de forma reversível. |
 | Proteção contra ataques | Implementação de bloqueio após múltiplas tentativas falhas. |
-| Expiração de token | Token JWT deve ter tempo de expiração configurável. |
 
 ## 3. Controle de Permissões Baseado em Papéis (RBAC)
  
@@ -37,11 +34,10 @@ Garantir que cada usuário tenha acesso apenas às funcionalidades autorizadas p
 ### Requisitos  
 | Requisito | Descrição |
 |-----------|-----------|
-| Suporte a múltiplos papéis | Admin, Usuário Comum, Moderador. |
+| Suporte a múltiplos papéis | Admin, Usuário Comum. |
 | Permissões por papel | Cada papel deve ter permissões específicas. |
 | Gestão de papéis | Administradores podem criar, modificar e excluir papéis. |
 | Controle de acesso | O sistema deve impedir acessos não autorizados. |
-| Múltiplos papéis por usuário | Um usuário pode ter mais de um papel. |
 
 ## 4. Reset de Senha Seguro
 
@@ -52,7 +48,6 @@ Permitir que usuários redefinam suas senhas de maneira segura caso a esqueçam.
 |-----------|-----------|
 | Solicitação de redefinição | O usuário informa o e-mail cadastrado. |
 | Envio de link seguro | Token único e temporário enviado por e-mail. |
-| Expiração do link | O link deve expirar após um período configurável. |
 | Nova senha | O usuário deve criar e confirmar uma nova senha. |
 | Invalidação de links usados | O sistema deve invalidar links já utilizados. |
 | Reset forçado por admin | O administrador pode forçar a redefinição. |
@@ -77,7 +72,7 @@ Permitir que usuários solicitem a exclusão de seus dados pessoais em conformid
 ### Requisitos  
 | Requisito | Descrição |
 |-----------|-----------|
-| Solicitação pelo usuário | Usuário pode solicitar exclusão no painel de configurações. |
+| Solicitação pelo usuário | Usuário pode solicitar exclusão |
 | Confirmação da solicitação | O sistema deve pedir confirmação antes da exclusão. |
 | Exclusão por administradores | Admins podem excluir contas sob justificativa válida. |
 | Eliminação de dados sensíveis | Todos os dados devem ser excluídos ou anonimizados. |
