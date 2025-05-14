@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordRequestForm
 from src.utils.config import get_user_by_username, password_decode, create_access_token
 from src.database import get_db
+from src.models.logger import Log
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
@@ -17,6 +18,7 @@ def login(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid credentials"
         )
+        new_log = Log
 
     access_token = create_access_token(data={"sub": user.username})
     return {"access_token": access_token, "token_type": "bearer"}
