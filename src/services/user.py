@@ -86,17 +86,25 @@ def update_user(db: Session, user_id: int, new_user_data: UserUpdate) -> User:
             detail="Unexpected error while updating user"
         )
 
-def delete_user(db: Session, user_id:int ) -> None:
-    user = get_object_by_id(db, User, user_id)
-    if User.role_name == "Admin"
+from sqlalchemy.orm import joinedload
+
+def delete_user(db: Session, user_id: int) -> None:
+    user = db.query(User).options(joinedload(User.role)).filter(User.id == user_id).first()
+
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    if user.role.name == "Admin":
         db.delete(user)
+
     try:
-        db.commit
+        db.commit()
     except IntegrityError:
         db.rollback()
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
-            detail = "Unexpected error while updating user"
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Unexpected error while deleting user"
         )
+
 
     

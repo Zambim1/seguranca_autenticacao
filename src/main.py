@@ -1,10 +1,13 @@
 from fastapi import FastAPI
 from src.routes import user, message, auth
 from src.database import Base, engine
+from src.utils.middleware import GlobalLogMiddleware
 
 app = FastAPI()
 
 Base.metadata.create_all(bind=engine)
+app.add_middleware(GlobalLogMiddleware)
+
 
 @app.get("/")
 def health_check():
